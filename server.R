@@ -2,14 +2,14 @@
 library(dplyr)
 data_i <- read_delim("IHME_Data.csv")
 pathogen_data <- data_i %>% select(-sex_id, -sex_name, -metric_id, -upper, -lower, -measure_id, -cause_id, cause_name) %>% filter(!(location_name %in% c(
-                                                                                                                                                                          "Southeast Asia, East Asia, and Oceania", 
-                                                                                                                                                                          "East Asia", "Democratic People's Republic of Korea",
-                                                                                                                                                                          "Southeast Asia", "Lao People's Democratic Republic", "Marshall Islands",
-                                                                                                                                                                          "Central Europe, Eastern Europe, and Central Asia", 
-                                                                                                                                                                          "Central Asia", "Central Europe", "Eastern Europe", "Republic of Moldova", 
-                                                                                                                                                                          "High-income", "High-income Asia Pacific", "Western Europe",
-                                                                                                                                                                          "Southern Sub-Saharan Africa", "Southern Latin America", 
-                                                                                                                                                                          "High-income North America", "Latin America and Caribbean")), metric_name == "Number",measure_name == "Deaths")
+                                                                                                       "Southeast Asia, East Asia, and Oceania", 
+                                                                                                       "East Asia", "Democratic People's Republic of Korea",
+                                                                                                       "Southeast Asia", "Lao People's Democratic Republic", "Marshall Islands",
+                                                                                                       "Central Europe, Eastern Europe, and Central Asia", 
+                                                                                                       "Central Asia", "Central Europe", "Eastern Europe", "Republic of Moldova", 
+                                                                                                       "High-income", "High-income Asia Pacific", "Western Europe",
+                                                                                                       "Southern Sub-Saharan Africa", "Southern Latin America", 
+                                                                                                       "High-income North America", "Latin America and Caribbean")), metric_name == "Number",measure_name == "Deaths")
 options_pathogens <- as.list(unique(pathogen_data$pathogen))
 
 # Define server logic 
@@ -194,10 +194,6 @@ server <- function(input, output) {
     }
   })
 }
-
-
-
-
 
 # Run the application 
 #shinyApp(ui = ui, server = server)
