@@ -18,14 +18,14 @@ library(data.table)
 #read in data 
 data_i <- read_delim("IHME_Data.csv")
 pathogen_data <- data_i %>% select(-sex_id, -sex_name, -metric_id, -upper, -lower, -measure_id, -cause_id, cause_name) %>% filter(!(location_name %in% c(
-                                                                                                                                                                          "Southeast Asia, East Asia, and Oceania", 
-                                                                                                                                                                          "East Asia", "Democratic People's Republic of Korea",
-                                                                                                                                                                          "Southeast Asia", "Lao People's Democratic Republic", "Marshall Islands",
-                                                                                                                                                                          "Central Europe, Eastern Europe, and Central Asia", 
-                                                                                                                                                                          "Central Asia", "Central Europe", "Eastern Europe", "Republic of Moldova", 
-                                                                                                                                                                          "High-income", "High-income Asia Pacific", "Western Europe",
-                                                                                                                                                                          "Southern Sub-Saharan Africa", "Southern Latin America", 
-                                                                                                                                                                          "High-income North America", "Latin America and Caribbean")),metric_name == "Number", measure_name == "Deaths")
+                                                                                                          "Southeast Asia, East Asia, and Oceania", 
+                                                                                                          "East Asia", "Democratic People's Republic of Korea",
+                                                                                                          "Southeast Asia", "Lao People's Democratic Republic", "Marshall Islands",
+                                                                                                          "Central Europe, Eastern Europe, and Central Asia", 
+                                                                                                          "Central Asia", "Central Europe", "Eastern Europe", "Republic of Moldova", 
+                                                                                                          "High-income", "High-income Asia Pacific", "Western Europe",
+                                                                                                          "Southern Sub-Saharan Africa", "Southern Latin America", 
+                                                                                                          "High-income North America", "Latin America and Caribbean")),metric_name == "Number", measure_name == "Deaths")
 options_pathogens <- as.list(unique(pathogen_data$pathogen))
 
 # Define UI for application
@@ -123,18 +123,18 @@ ui <- fluidPage(
     #Conclusion page
     tabPanel("Conclusion and Takeaways",
              h2("Description of a Notable Insight/Pattern Discovered in Project"),
-              p("Overall, an insight/pattern discovered from our project and dataset is that these bacterial infections and pathogens are highly prevalent across all age groups and locations globally. While there are certain bacterial syndromes and pathogens that cause the most deaths in certain age groups and locations, it is mainly consistent. This illustrates that these infections are caused by similar issues in these countries and the health community can take measures against the pathogens and bacterial infections to combat the large number of deaths occurring. Examples of such measures include vaccine development for the pathogens, or medicine development for the infections caused by the pathogens."), 
+              p("Overall, an insight/pattern discovered from this project and dataset is that these bacterial infections and pathogens are highly prevalent across all age groups and locations globally. While there are certain bacterial syndromes and pathogens that cause the most deaths in certain age groups and locations, it is mainly consistent. This illustrates that these infections are caused by similar issues in these countries and the health community can take measures against the pathogens and bacterial infections to combat the large number of deaths occurring. Examples of such measures include vaccine development for the pathogens, or medicine development for the infections caused by the pathogens."), 
              
              h2("\n Specific Data to Demonstrate Insight"),
               p("From the estimated infectious-related deaths in 2019, there were approximately 7.7 million deaths associated with the 33 bacterial pathogens from the dataset. Below, are the questions we were aiming to specifically address in this project (for our target audience):"), 
 
-             h3(" \n 1) Which pathogens are responsible for the largest number of deaths by location"),
+             h3(" \n Which pathogens are responsible for the largest number of deaths by location?"),
               p("The top five pathogens that were responsible for the largest number of deaths by location were Staphylococcus auereus, Escherichia coli, Streptococcus pneumoniae, Klebsiella pneumoniae, and Pseudomonas aeruginosa. These five pathogens contributed to approximately 54.9% of deaths globally."), 
-             h3("\n 2) Which pathogens are responsible for the largest number of deaths by age?"), 
+             h3("\n Which pathogens are responsible for the largest number of deaths by age?"), 
               p("Across all age groups, the maximum number of deaths is approximately 12535446.23, with the leading pathogens being the same five that are listed above (Staphylococcus auereus, Escherichia coli, Streptococcus pneumoniae, Klebsiella pneumoniae, and Pseudomonas aeruginosa). More specifically, among children younger than 5 years, S pneumoniae caused the most deaths."), 
-             h3("\n 3) Are pathogens easily identifiable by their symptoms?"),
+             h3("\n Are pathogens easily identifiable by their symptoms?"),
               p("Unfortunatly, these 33 pathogens are difficult to diagnose by the symptoms they cause because they often result in multiple symptoms. There are only 9 pathogens (Aeromonas spp, Camplylobacter spp, Clostridioides difficile,Legionella spp, Listeria monocytogenes,Salmonella Paratyphi, Shigella spp, Vibrio cholerae, Neisseria gonorrhoeae), that have only 2 symptoms/bacterial infections each. All the other pathogens have multiple combinations of bacterial infections possible making it difficult to identify a pathogen based off of the infections it causes,alone."),
-             h3("\n 4) Do bacterial infections/symptoms differ by age group?"),
+             h3("\n Do bacterial infections/symptoms differ by age group?"),
               p("Almost all bacterial infections were present across all age groups and in mostly equal amounts except for gonorrhea and chlamydia which were only present in ages 5+. Additionally, this suggests that symptoms do not vary based on age for the 33 pathogens, however, certain symptoms such as bloodstream infections are more common than others (ex: typhoid fever)."),
              
              h2("\n Broader Implications of Insights"),
@@ -145,11 +145,10 @@ ui <- fluidPage(
              However, there is an ethical issue present as this data is accessed through the GHDx: Global Health Data Exchange which is a catalog of vital statistics and health related data, fully available to the public, which can be harmful to the populations that the data was taken from. There is a lack of confidentiality for these populations, and there may be intentional misuse of the data that can affect the locations and age groups from the data. Additionally, it is unclear whether or not certain pathogens have a large impact on smaller nations and certain age groups or if there is simply less data collected from those nations. Therefore, these populations may be harmed because they will not be well represented in the steps our target audience will take based on the results from this data set."),
              
              h2("\n How to Advance the Project"), 
-             p("To advance the project, we could show the user what pathogen they are in most danger of depending on their location, symptoms, and age group by including widgets in which they can input this information, which the app will thus compute. Additionally, after providing the pathogen they are in most danger of, the project could provide important measures to take to stay safe and continue prevention of the spread of these infections so that the user can stay informed through an accessible application."),
+             p("To advance the project, the project could display what pathogen they are in most danger of depending on their location, symptoms, and age group by including widgets in which they can input this information, which the app will thus compute. Additionally, after providing the pathogen they are in most danger of, the project could provide important measures to take to stay safe and continue prevention of the spread of these infections so that the user can stay informed through an accessible application."),
     ), 
   )
 )
   
-
 # Run the application 
 #shinyApp(ui = ui, server = server)
